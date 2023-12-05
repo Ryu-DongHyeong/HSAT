@@ -9,5 +9,11 @@ int main() {
 	cout.tie(0);
 	ios::sync_with_stdio(false);
 
-
+	int N;
+	cin >> N;
+	int cnt = N / 4;
+	for (int i = 1; i <= cnt; i++) {
+		cout << "long ";
+	}
+	cout << "int";
 }
