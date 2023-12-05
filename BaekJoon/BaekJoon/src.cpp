@@ -15,16 +15,20 @@ int main() {
 	// N 바구니 개수
 	// M 공 넣는 횟수
 
-	int x, y, z;
+	for (int i = 1; i <= N; i++) {
+		arr[i] = i;
+	}
 
-	for (int i = 0; i < M; i++) {
-		cin >> x >> y >> z;
-		for (int j = x; j <= y; j++) {
-			arr[j] = z;
-		}
+	int x, y;
+
+	for (int i = 1; i <= M; i++) {
+		cin >> x >> y;
+		int temp = arr[x];
+		arr[x] = arr[y];
+		arr[y] = temp;
 	}
 
 	for (int i = 1; i <= N; i++) {
-		cout << arr[i] << " ";
+		cout << arr[i];
 	}
 }
