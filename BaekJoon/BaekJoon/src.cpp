@@ -23,12 +23,16 @@ int main() {
 
 	for (int i = 1; i <= M; i++) {
 		cin >> x >> y;
-		int temp = arr[x];
-		arr[x] = arr[y];
-		arr[y] = temp;
+		int sum_temp = x + y;
+		int cha_temp = (y - x + 1) / 2;
+		for (int j = 0; j < cha_temp; j++) {
+			int temp = arr[x + j];
+			arr[x + j] = arr[sum_temp - x - j];
+			arr[sum_temp - x - j] = temp;
+		}
 	}
 
 	for (int i = 1; i <= N; i++) {
-		cout << arr[i];
+		cout << arr[i]<<" ";
 	}
 }
