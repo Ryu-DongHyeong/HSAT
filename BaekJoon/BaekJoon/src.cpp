@@ -3,35 +3,38 @@
 #include <algorithm>
 #include <vector>
 using namespace std;
-bool arr[101][101];
+int arr[1000001];
+vector<vector<int>> v;
 
 int main() {
 	cin.tie(0);
 	cout.tie(0);
 	ios::sync_with_stdio(false);
 
-	int n;
-	int x = 0;
-	int y = 0;
-	cin >> n;
-	for (int i = 1; i <= n; i++) {
-		cin >> x >> y;
-		for (int j = 1; j <= 10; j++) {
-			for (int k = 1; k <= 10; k++) {
-				arr[x + j][y + k] = 1;
-			}
+	int N;
+	cin >> N;
+	
+	for (int i = 0; i < N; i++) {
+		int a;
+		cin >> a;
+		v.push_back({ a,i });
+	}
+	
+	sort(v.begin(), v.end());
+
+	int temp = v[0][0];
+	int cnt = 0;
+	for (int i = 0; i < N; i++) {
+		if (temp == v[i][0]) {
+			arr[v[i][1]] = cnt;
 		}
+		else {
+			arr[v[i][1]] = ++cnt;
+		}
+		temp = v[i][0];
 	}
 
-	int ans = 0;
-
-	for (int i = 1; i <= 100; i++) {
-		for (int j = 1; j <= 100; j++) {
-			if (arr[i][j] == 1) {
-				ans++;
-			}
-		}
+	for (int i = 0; i < N; i++) {
+		cout << arr[i] << " ";
 	}
-
-	cout << ans;
 }
